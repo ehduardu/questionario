@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        text-align: center;
+      }
+    </style>
+    <title>Questionário</title>
+  </head>
+  <body>
+    <div id="conteudo">
+      <h2>Questionário de espanhol:</h2>
+      <br />
+      <br />
+    </div>
+    <div id="buttons">
+      <button
+        id="btnSearch"
+        type="button"
+        class="btn btn-success"
+        onclick="corrigir()"
+      >
+        Corrigir
+      </button>
+    </div>
+
+    <script>
+      window.onload = function() {
+        criarCampos();
+      };
+
+      function criarCampos() {
+        var text = document.createElement("div");
+        var perguntas = [];
+
+        var p1 = "Traduza essa frase 'Irei chegar atraso hoje.'";
+        var p2 = "Traduza a palavra 'Cachorro'";
+        var p3 = "Como se pede por favor em espanhol ?";
+
+        perguntas.push(p1, p2, p3);
+
+        for (var i = 0; i < perguntas.length; i++) {
+          var label = perguntas[i];
+
+          text.innerHTML +=
+            '<b><label id= "c1">' +
+            label +
+            '</label><br/></b><input id="quest' +
+            i +
+            '" type="text" name="quest' +
+            i +
+            '" value=""> <br/><br/>';
+        }
+
+        var div = document.getElementById("conteudo");
+
+        div.appendChild(text);
+      }
+
+      function corrigir() {
+        var rp1 = document.getElementById("quest0");
+        var rp2 = document.getElementById("quest1");
+        var rp3 = document.getElementById("quest2");
+
+        var gab1 = "Llegaré tarde hoy";
+        var gab2 = "Perro";
+        var gab3 = "Por favor";
+
+        var respostas = [];
+        var gabarito = [];
+
+        respostas.push(rp1, rp2, rp3);
+        gabarito.push("Llegaré tarde hoy", "Perro", "Por Favor");
+
+        for (var i = 0; i < respostas.length; i++) {
+          var resposta = respostas[i].value;
+          if (resposta.toUpperCase() != gabarito[i].toUpperCase()) {
+            //rp1.style.background = "red";
+            respostas[i].style.borderColor = "red";
+          } else {
+            respostas[i].style.borderColor = "green";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
