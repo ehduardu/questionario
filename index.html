@@ -13,30 +13,77 @@
     <style>
       body {
         text-align: center;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
       }
+
+      h2{
+        color: black;
+      }
+
+      div#centro{
+        height: 100px;
+        width: 100%;
+        position: absolute;
+        left: 50%;
+        top: 10%;
+        transform: translate(-50%, -50%);
+      }
+
+      div#conteudo{
+        height: 50px;
+        width: 50%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        margin-bottom: 20px;
+      }
+
+      button{
+        margin-top: 40px;
+      }
+
+      td{
+        background-color: cornflowerblue;
+      }
+
     </style>
     <title>Questionário</title>
   </head>
   <body>
-    <div id="conteudo">
-      <h2>Questionário de espanhol:</h2>
-      <br />
-      <br />
+    <div id="centro">
+      <div id="conteudo">
+        <h2>Questionário de espanhol:</h2>
+        <br />
+        <br />
+        <table style="width:100%">
+          <tr>
+            <td valign=top><font face='Genevia,Arial'>El aburrimiento del domingo [I.ROBERTO ARLT, Aguafuertes porteñas.  Buenos Aires, vida cotidiana, Buenos Aires, Editorial Losada, junio 2000,   pp. 26-27]<br><br>	Buenos Aires <input type=text name=rep1 size=10>[ ES/ ESTÁ]    <input type=text name=rep2 size=10>[el/ la]   ciudad <input type=text name=rep3 size=10>[más/mas]   triste <input type=text name=rep4 size=10>[del / de el]   mundo el día domingo. Triste <input type=text name=rep5 size=10>[e/y]   <input type=text name=rep6 size=10>[aburrido/aburrida]  .  <br>	Día horrible para el que está acostumbrado a no hacer nada. Día espantoso para el fiacún que <input type=text name=rep7 size=10>[tener]   licencia de vagancia para toda la semana.  [] Porque el placer de no trabajar <input type=text name=rep8 size=10>[estribar]  en que los otros trabajen. Y puesto que el domingo nadie trabaja ¿qué valor tiene entonces el domingo? <br><br>	De allí, y esta observación <input type=text name=rep9 size=10> [ser-estar] exacta, que los grandes vagos sólo eligen  como día de trabajo el domingo. Por ejemplo los toreros, los <input type=text name=rep10 size=10> [boxeadores-boxeadoros] los <input type=text name=rep11 size=10>[jugador-jugadoras-jugadores]  de football, los jockeys, etc., etc. Esta gente que <input type=text name=rep12 size=10>[cultivar] el atorrantismo más exquisito, más refinado y purísimo, sólo <input type=text name=rep13 size=10> [trabajar] los domingos, y trabaja no tanto para ganarse el pan [], sino sencillamente para no compartir su vagancia con la multidud que en ese día no <input type=text name=rep14 size=10>[hacer] nada, porque así está decretado por las <input type=text name=rep15 size=10>[ley/leys/leyes]  divinas y humanas.</font>
+            </td>
+          </tr>     
+        </table>
+        <div id="buttons">
+          <button
+            id="btnSearch"
+            type="button"
+            class="btn btn-success"
+            onclick="corrigir()"
+          >
+            Corrigir
+          </button>
+      </div>
     </div>
-    <div id="buttons">
-      <button
-        id="btnSearch"
-        type="button"
-        class="btn btn-success"
-        onclick="corrigir()"
-      >
-        Corrigir
-      </button>
+    
     </div>
+
+    
 
     <script>
       window.onload = function() {
-        criarCampos();
+        
       };
 
       function criarCampos() {
@@ -65,6 +112,19 @@
         var div = document.getElementById("conteudo");
 
         div.appendChild(text);
+      }
+
+      function criarTexto(){
+        let textArea = document.createElement("div");
+        textArea.setAttribute("id", "textArea");
+        let perguntas = [];
+
+        textArea.innerHTML +=
+        '<p>Me llamo Eugenia y (soy)  (ser/estar) donostierra. (vivo)  (vivir) en la Plaza del Sol, en el centro de Madrid. No (ser/estar) (estoy)  casada, aunque (salir) (salgo)  con un chico que (llamarse, él) (se Ilama)  Ignacio. En realidad, mi familia (proceder) (procede)  del País Vasco, así que en casa (hablar, nosotros) (hablamos)  vasco. (tener, yo) (tengo)  veintitrés años y (ser/estar) (estoy)  a punto de acabar mis estudios. De momento, los exámenes no me (ir) (van)  muy bien. (esperar, yo) (espero)  mejorar un poco, porque si (repetir, yo) (repito)  curso, mis padres ... ¿Me (entender, vosotros) (entendéis) , verdad? Lo peor (ser/estar) (es)  que mi hermano Xabier (sacar, él) (saca)  muy buenas notas. No (saber, yo) (sé)  cómo lo hace. Yo no (parecerse) (me parezco)  a él. En realidad, me (costar) (cuesta)  mucho aprobar y no (tener, yo) (tengo)  mucho tiempo para estudiar. ¡En fin, la vida (ser/estar) (es)  dura!</p>';
+
+        let div = document.getElementById("conteudo");
+
+        div.appendChild(textArea);
       }
 
       function corrigir() {
